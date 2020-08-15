@@ -1,0 +1,58 @@
+//https://www.geeksforgeeks.org/minimum-swaps-required-bring-elements-less-equal-k-together/
+
+// ************************MINIMUM SWAPS*********************************
+
+#include<bits/stdc++.h>
+using namespace std;
+int req_fun(int a[],int n,int k)
+{
+	int count=0;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]<=k)
+		{
+			count++;
+		}
+	}
+	int more =0;
+	for(int i=0;i<count;i++)
+	{
+		if(a[i]>k)
+		{
+			more++;
+		}
+	}
+	int i,j;
+	int abc=more;
+	for(int i=0;i<n;i++)
+	{
+		for(j=count; j < n; j++)
+		{
+		if(a[i]>k)
+		{
+			--more;
+		}
+		if(a[j]>k)
+		{
+			++more;
+		}
+		}
+		abc=min(abc,more);
+	}
+	return abc;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	int arr[n];
+	
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	int key;
+	cin>>key;
+	cout<<req_fun(arr,n,key);
+	return 0;
+}
