@@ -1,0 +1,17 @@
+//https://leetcode.com/problems/rotate-array/
+/* ****************Rotation of Array *************** */
+
+class Solution {
+public:
+    void rotate(std::vector<int>& nums, int k)
+    {
+        unsigned int num = nums.size();
+        std::vector<int> temp = nums;
+        for (unsigned int i = 0; i < num; ++i)
+        {
+            temp.at((i + k) % num) = nums.at(i);
+        }
+        nums = temp;
+    }
+
+};
